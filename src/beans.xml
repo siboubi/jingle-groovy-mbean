@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="mbeanServer"
+		class="org.springframework.jmx.support.MBeanServerFactoryBean">
+		<property name="locateExistingServerIfPossible" value="true"></property>
+	</bean>
+	<bean id="exporter"
+		class="org.springframework.jmx.export.MBeanExporter">
+		<property name="assembler" ref="assembler"></property>
+		<property name="namingStrategy" ref="namingStrategy"></property>
+		<property name="beans">
+			<map>
+                <entry key="bean:name=defaultCalcName" value-ref="calcBean"/>
+            </map>
+		</property>
+		<property name="server" ref="mbeanServer"></property>
+		<property name="autodetect" value="true"></property>
+	</bean>
+	<bean id="jmxAttributeSource"
+		class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource">
+	</bean>
+	<bean id="assembler"
+		class="org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler">
+		<property name="attributeSource" ref="jmxAttributeSource"></property>
+	</bean>
+	<bean id="namingStrategy"
+		class="org.springframework.jmx.export.naming.MetadataNamingStrategy">
+		<property name="attributeSource" ref="jmxAttributeSource"></property>
+	</bean>
+	<bean id="calcBean"
+		class="org.jingle.test.monitoringspring.client.Calculator">
+		<property name="base" value="10"></property>
+	</bean>
+</beans>

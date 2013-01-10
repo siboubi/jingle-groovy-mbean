@@ -6,5 +6,14 @@
 	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
 	<classpathentry kind="lib" path="lib/jcommon-1.0.14.jar"/>
 	<classpathentry kind="lib" path="lib/jfreechart-1.0.11.jar" sourcepath="/Users/siboubib/.m2/repository/jfree/jfreechart/1.0.11/jfreechart-1.0.11-sources.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-aop-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-asm-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-beans-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-context-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-core-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-expression-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-web-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
