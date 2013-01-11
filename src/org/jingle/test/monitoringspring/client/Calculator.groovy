@@ -27,7 +27,8 @@ public class Calculator {
     @ManagedOperation(description="Add two numbers")
     @ManagedOperationParameters([
         @ManagedOperationParameter(name="x", description="The first number"),
-        @ManagedOperationParameter(name="y", description="The second number")])
+        @ManagedOperationParameter(name="y", description="The second number")
+	])
     public int add(int x, int y) {
         invocations++
         return x + y
