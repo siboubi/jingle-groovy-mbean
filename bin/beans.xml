@@ -8,6 +8,10 @@
 		class="org.springframework.jmx.support.MBeanServerFactoryBean">
 		<property name="locateExistingServerIfPossible" value="true"></property>
 	</bean>
+	<!--
+    this bean needs to be eagerly pre-instantiated in order for the exporting to occur;
+    this means that it must not be marked as lazily initialized
+  	-->
 	<bean id="exporter"
 		class="org.springframework.jmx.export.MBeanExporter">
 		<property name="assembler" ref="assembler"></property>
@@ -20,13 +24,23 @@
 		<property name="server" ref="mbeanServer"></property>
 		<property name="autodetect" value="true"></property>
 	</bean>
+	<!-- 
+	 Using the MetadataMBeanInfoAssembler you can define the management interfaces for your beans using source level metadata.
+	 The reading of metadata is encapsulated by the org.springframework.jmx.export.metadata.JmxAttributeSource interface.
+	 Out of the box, Spring JMX provides support for two implementations of this interface: 
+	 - org.springframework.jmx.export.metadata.AttributesJmxAttributeSource for Commons Attributes and 
+	 - org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource for JDK 5.0 annotations. 
+	-->
 	<bean id="jmxAttributeSource"
 		class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource">
 	</bean>
+	<!-- will create management interface using annotation metadata -->
+	<!-- The MetadataMBeanInfoAssembler must be configured with an implementation instance of the JmxAttributeSource interface for it to function correctly (there is no default). -->
 	<bean id="assembler"
 		class="org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler">
 		<property name="attributeSource" ref="jmxAttributeSource"></property>
 	</bean>
+	<!-- will pick up the ObjectName from the annotation -->
 	<bean id="namingStrategy"
 		class="org.springframework.jmx.export.naming.MetadataNamingStrategy">
 		<property name="attributeSource" ref="jmxAttributeSource"></property>

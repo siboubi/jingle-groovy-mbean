@@ -8,8 +8,11 @@ import org.jfree.data.category.DefaultCategoryDataset as Dataset
 import org.jfree.chart.plot.PlotOrientation as Orientation
 import groovy.swing.SwingBuilder
 import javax.swing.WindowConstants as WC
+import com.sun.jdmk.comm.HtmlAdaptorServer
 
-def serverUrl = 'service:jmx:rmi:///jndi/rmi://localhost:9004/jmxrmi'
+
+//def serverUrl = 'service:jmx:rmi:///jndi/rmi://localhost:9004/jmxrmi'
+def serverUrl = 'service:jmx:rmi:///jndi/rmi://10.158.16.101:9004/jmxrmi'
 def server = JmxFactory.connect(new JmxUrl(serverUrl)).MBeanServerConnection
 def serverInfo = new GroovyMBean(server, 'Catalina:type=Server').serverInfo
 println "Connected to: $serverInfo"
@@ -20,6 +23,7 @@ def modules = allNames.findAll{ name ->
     name.contains('j2eeType=WebModule')
 }.collect{ new GroovyMBean(server, it) }
 
+// Print out on the server log
 println "Found ${modules.size()} web modules. Processing ..."
 def dataset = new Dataset()
 
@@ -28,6 +32,8 @@ modules.each{ m ->
     dataset.addValue m.processingTime, 0, m.path
 }
 
+
+// Swing application
 def labels = ['Time per Module', 'Module', 'Time']
 def options = [false, true, true]
 def chart = ChartFactory.createBarChart(*labels, dataset,

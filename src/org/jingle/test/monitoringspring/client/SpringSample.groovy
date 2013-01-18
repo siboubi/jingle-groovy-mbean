@@ -8,6 +8,8 @@ import javax.management.Attribute
 // get normal bean
 def ctx = new ClassPathXmlApplicationContext("beans.xml")
 def calc = ctx.getBean("calcBean")
+def mb = ctx.getBean("mbeanServer")
+println mb.DEFAULT_FAIR_LOCK_POLICY
 
 Thread.start{
 	// access bean via JMX, use a separate thread just to

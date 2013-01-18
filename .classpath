@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-core-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-expression-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/spring-mbean/target/spring-mbean-0.0.1-SNAPSHOT/WEB-INF/lib/spring-web-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="src/jmxtools-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
